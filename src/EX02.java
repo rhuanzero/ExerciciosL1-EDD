@@ -1,4 +1,4 @@
-public class EX01 {
+public class EX02 {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
     }
