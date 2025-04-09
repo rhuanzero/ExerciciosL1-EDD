@@ -7,11 +7,10 @@ x. Isto é, se x = “ABABBA”, y deve equivaler a “ABBABA”. Em cada ponto,
 o próximo caractere da cadeia.  */
 
 public class EX01 {
-    public static void main(String[] args) {
+    public static boolean verificarxcy(String entrada) {
         Scanner in = new Scanner(System.in);
-        String entrada = "ACA";
         int tam = (entrada.length()-1)/2;
-        boolean verificaChar = false;
+        boolean verificaChar;
         Pilha x = new Pilha(tam);
         Pilha y = new Pilha(tam);
 
@@ -19,10 +18,10 @@ public class EX01 {
             verificaChar = (entrada.charAt(i) == (int) 'A' || entrada.charAt(i) == (int) 'B' || entrada.charAt(i) == (int) 'C');
             if (!verificaChar){
                 System.out.println("Caracteres inválidos!");
-                break; //return false;
-            };
+                return false;
+            }
         }
-        if ((entrada.charAt(tam) == 'C') && verificaChar){// Verifica se o C está na posiçao certa e se contem apenas A e B
+        if ((entrada.charAt(tam) == 'C')){// Verifica se o C está na posiçao certa
             for (int i = 0; !(entrada.charAt(i) == 'C'); i++) {
                 if (!(entrada.charAt(i) == (int) 'C')) {
                     System.out.print(entrada.charAt(i));
@@ -36,23 +35,19 @@ public class EX01 {
                     y.push(entrada.charAt(i));
                 }
             }
-           // return true;
         }
         else {
             System.out.println("O caracter C está na posição errada!");
-            //return false;
+            return false;
         }
         System.out.println();
         for (int i = 0; i < tam; i++) {
             if (x.pop() != y.pop()) {
                 System.out.println("Não são simetricos!");
-                break;//return false;
-            }
-            else {
-                System.out.print("Está no formato XCY!");
-                //return true;
+                return false;
             }
         }
+        System.out.print("Está no formato XCY!");
+        return true;
     }
-
 }

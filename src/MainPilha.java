@@ -4,14 +4,14 @@ public class MainPilha
 {
 	public static void main(String args[])
 	{
-		Scanner scanner = new Scanner(System.in);
+		Scanner in = new Scanner(System.in);
 		
 		Pilha pilha = new Pilha(20);
 		String s;
 		char c;
-				
-		System.out.println("Entre com uma frase: ");
-		s = scanner.nextLine();
+
+		/*System.out.println("Entre com uma frase: ");
+		s = in.nextLine();
 		
 		int i = 0;
 		
@@ -29,8 +29,11 @@ public class MainPilha
 			System.out.print(c);
 		}
 		
-		System.out.print("\n");
+		System.out.print("\n");*/
+
+		// EX01
+		EX01.verificarxcy(in.nextLine());
 		
-		scanner.close();
+		in.close();
 	}
 }
