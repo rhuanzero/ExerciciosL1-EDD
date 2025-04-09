@@ -7,41 +7,45 @@ o próximo caractere da cadeia.  */
 public class EX01 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String entrada = "ABABBCBBABA";
+        String entrada = "ACA";
         int tam = (entrada.length()-1)/2;
-        System.out.println(tam);
+        boolean verificaChar = false;
         Pilha x = new Pilha(tam);
         Pilha y = new Pilha(tam);
 
-        if ((entrada.charAt(tam) == 'C')) {// Verifica se o C está na posiçao certa
-            for (int i = 0; i < entrada.length(); i++) {
+        for (int i = 0; i < entrada.length(); i++) {
+            verificaChar = (entrada.charAt(i) == (int) 'A' || entrada.charAt(i) == (int) 'B' || entrada.charAt(i) == (int) 'C');
+        }
+        if ((entrada.charAt(tam) == 'C') && verificaChar){// Verifica se o C está na posiçao certa e se contem apenas A e B
+            for (int i = 0; !(entrada.charAt(i) == 'C'); i++) {
                 if (!(entrada.charAt(i) == (int) 'C')) {
                     System.out.print(entrada.charAt(i));
                     x.push(entrada.charAt(i));
-                } else {
-                    System.out.println("C encontrado!");
                 }
             }
-            for (int i = entrada.length(); i >= 0; i--) {
-                System.out.println(i);
+            System.out.println();
+            for (int i = entrada.length()-1; i != tam; i--) {
                 if (!(entrada.charAt(i) == (int) 'C')) {
                     System.out.print(entrada.charAt(i));
                     y.push(entrada.charAt(i));
-                } else {
-                    System.out.println("C encontrado!");
                 }
             }
+           // return true;
         }
         else {
-            System.out.println("o C está na posição errada!");
+            System.out.println("Errado!");
+            //return false;
         }
-
-
-
-
-
-
-
+        System.out.println();
+        for (int i = 0; i < tam; i++) {
+            if (x.pop() != y.pop()) {
+                System.out.println("Errado!");
+                //return false;
+            }
+            else {
+                System.out.print("certo!");
+            }
+        }
     }
 
 }
