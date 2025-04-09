@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 /* 1) Escreva uma função para determinar se uma cadeia de caracteres (string) é da forma: x C
 y onde x e y são cadeias de caracteres compostas por letras ‘A’ e/ou ‘B’, e y é o inverso de
@@ -15,6 +17,10 @@ public class EX01 {
 
         for (int i = 0; i < entrada.length(); i++) {
             verificaChar = (entrada.charAt(i) == (int) 'A' || entrada.charAt(i) == (int) 'B' || entrada.charAt(i) == (int) 'C');
+            if (!verificaChar){
+                System.out.println("Caracteres inválidos!");
+                break; //return false;
+            };
         }
         if ((entrada.charAt(tam) == 'C') && verificaChar){// Verifica se o C está na posiçao certa e se contem apenas A e B
             for (int i = 0; !(entrada.charAt(i) == 'C'); i++) {
@@ -33,17 +39,18 @@ public class EX01 {
            // return true;
         }
         else {
-            System.out.println("Errado!");
+            System.out.println("O caracter C está na posição errada!");
             //return false;
         }
         System.out.println();
         for (int i = 0; i < tam; i++) {
             if (x.pop() != y.pop()) {
-                System.out.println("Errado!");
-                //return false;
+                System.out.println("Não são simetricos!");
+                break;//return false;
             }
             else {
-                System.out.print("certo!");
+                System.out.print("Está no formato XCY!");
+                //return true;
             }
         }
     }
