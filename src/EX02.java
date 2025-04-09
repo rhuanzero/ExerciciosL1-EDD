@@ -1,5 +1,5 @@
 public class EX02 {
-    public static void main(String[] args) {
+    public static void boolean() {
         System.out.println("Hello, World!");
     }
 
