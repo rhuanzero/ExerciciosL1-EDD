@@ -75,7 +75,6 @@ public class Pilha
         {
             System.out.println("Pilha vazia.");
         }
-
         return elemento;
     }
 }

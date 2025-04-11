@@ -41,6 +41,10 @@ public class MainPilha
 		}
 		System.out.println("A pilha está cheia!");
 
+		while (!duasPilhas.vazia()){
+			duasPilhas.pop();
+		}
+
 		in.close();
 	}
 }

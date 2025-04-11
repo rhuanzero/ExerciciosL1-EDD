@@ -39,10 +39,20 @@ public class EX03 extends Pilha{ //Trocando o "private" para "protected" na clas
                 escolha = sc.nextInt();
             }while (escolha != 1 && escolha != 2);
             if (escolha == 1){
-                c = vetor[topo--];
+                if (topo != -1) {
+                    c = vetor[topo--];
+                }
+                else {
+                    //System.out.println("A pilha 1 está vazia!");
+                }
             }
             else {
-                c = vetor[topo2++];
+                if (topo2 != n) {
+                    c = vetor[topo2++];
+                }
+                else {
+                    //System.out.println("A pilha 2 está vazia!");
+                }
             }
 
         }
@@ -63,18 +73,22 @@ public class EX03 extends Pilha{ //Trocando o "private" para "protected" na clas
                 escolha = sc.nextInt();
             }while(escolha!=1 && escolha!=2);
             if (escolha == 1){
-                vetor[++topo] = elemento;
-                return true;
+                if (topo != -1) {
+                    vetor[++topo] = elemento;
+                    return true;
+                }
             }
             else {
-                vetor[--topo2] = elemento;
-                return true;
+                if (topo2 != n) {
+                    vetor[--topo2] = elemento;
+                    return true;
+                }
             }
         }
         else {
             System.out.println("Pilha cheia: push não funcionou.\n");
-            return false;
         }
+        return false;
     }
 
     @Override
@@ -99,11 +113,4 @@ public class EX03 extends Pilha{ //Trocando o "private" para "protected" na clas
         }
         return elemento;
     }
-
-
-
-
-
-
-
 }
