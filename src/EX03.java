@@ -5,10 +5,11 @@ pilha nunca seja deslocada para outro local dentro do vetor.*/
 import java.util.Scanner;
 
 public class EX03 extends Pilha{ //Trocando o "private" para "protected" na classe Pilha
-    Scanner in = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
     private int topo2;
 
     public EX03() {
+        super();
         topo2 = this.n;
     }
 
@@ -35,26 +36,69 @@ public class EX03 extends Pilha{ //Trocando o "private" para "protected" na clas
         if (!this.vazia()){
             do {
                 System.out.println("Pilha 1 ou 2?");
-                escolha = in.nextInt();
+                escolha = sc.nextInt();
             }while (escolha != 1 && escolha != 2);
             if (escolha == 1){
                 c = vetor[topo--];
             }
             else {
-                c = vetor[topo2--];
+                c = vetor[topo2++];
             }
 
         }
         else{
             System.out.println("Pilhas vazias");
         }
+        return c;
     }
 
+    @Override
+    public boolean push(char elemento)
+    {
+        if (!this.cheia())
+        {
+            int escolha;
+            do {
+                System.out.println("Pilha 1 ou 2?");
+                escolha = sc.nextInt();
+            }while(escolha!=1 && escolha!=2);
+            if (escolha == 1){
+                vetor[++topo] = elemento;
+                return true;
+            }
+            else {
+                vetor[--topo2] = elemento;
+                return true;
+            }
+        }
+        else {
+            System.out.println("Pilha cheia: push não funcionou.\n");
+            return false;
+        }
+    }
 
-
-
-
-
+    @Override
+    public char retornaTopo(){
+        char elemento = '\0';
+        int escolha;
+        if (!this.vazia()){
+            do {
+                System.out.println("Pilha 1 ou 2?");
+                escolha = sc.nextInt();
+            }while (escolha!=1 && escolha!=2);
+            if (escolha == 1){
+                elemento = vetor[topo];
+            }
+            else {
+                elemento = vetor[topo2];
+            }
+        }
+        else{
+            System.out.println("Pilhas vazias");
+            return elemento;
+        }
+        return elemento;
+    }
 
 
 

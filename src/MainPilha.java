@@ -32,8 +32,15 @@ public class MainPilha
 		System.out.print("\n");*/
 
 		// EX01
-		EX01.verificarxcy(in.nextLine());
-		
+		//EX01.verificarxcy(in.nextLine());
+
+		// EX03
+		EX03 duasPilhas = new EX03();
+		while (!duasPilhas.cheia()){
+			duasPilhas.push('r');
+		}
+		System.out.println("A pilha está cheia!");
+
 		in.close();
 	}
 }
