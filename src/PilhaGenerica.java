@@ -5,7 +5,16 @@ public class PilhaGenerica<T>
 	private int n;
 	private Vector<T> vetor;
 	private int topo;
-	
+
+
+	public PilhaGenerica()
+	{
+		n = 10;
+		vetor = new Vector<T>(10);
+		topo = -1;
+	}
+
+
 	public PilhaGenerica(int tamanho)
 	{		
 		n = tamanho;
@@ -34,7 +43,7 @@ public class PilhaGenerica<T>
 		}
 		else
 		{
-			//Impressão para fins didáticos
+			//Impressï¿½o para fins didï¿½ticos
 			System.out.println("Pilha vazia: pop nao funcionou.");
 			return null;
 		}
@@ -49,19 +58,19 @@ public class PilhaGenerica<T>
 		}
 		else
 		{
-			//Impressão para fins didáticos
+			//Impressï¿½o para fins didï¿½ticos
 			System.out.println("Pilha cheia: push nao funcionou.\n");
 			return false;
 		}
 	}
 	
-	public boolean retornaTopo(T elemento)
+	public T retornaTopo(T elemento)
 	{
 	     if(!this.vazia()){
 	        elemento = vetor.get(topo);         
-	        return true;
+	        return elemento;
 	     }
 	     else
-	    	 return false;
-	}	
+	    	 return elemento;
+	}
 }

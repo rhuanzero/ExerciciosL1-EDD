@@ -35,7 +35,7 @@ public class MainPilha
 		//EX01.verificarxcy(in.nextLine());
 
 		// EX03
-		EX03 duasPilhas = new EX03();
+		/*EX03 duasPilhas = new EX03();
 		while (!duasPilhas.cheia()){
 			duasPilhas.push('r');
 		}
@@ -43,6 +43,27 @@ public class MainPilha
 
 		while (!duasPilhas.vazia()){
 			duasPilhas.pop();
+		}*/
+
+		// EX04
+		/*PilhaGenerica<Integer> teste = new PilhaGenerica<Integer>(5);
+
+		while (!teste.cheia()){
+			teste.push(in.nextInt());
+		}
+
+		EX04.removerElemento(teste,5);
+
+		while (!teste.vazia()){
+			System.out.println(teste.pop());
+		}*/
+
+		// EX05
+		if (EX05.verificaBalanceamento(in.nextLine())){
+			System.out.println("Está balanceado com sucesso!");
+		}
+		else{
+			System.out.println("Não está balanceado!");
 		}
 
 		in.close();

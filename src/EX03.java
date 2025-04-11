@@ -77,12 +77,14 @@ public class EX03 extends Pilha{ //Trocando o "private" para "protected" na clas
                     vetor[++topo] = elemento;
                     return true;
                 }
+                System.out.println("Pilha cheia: push não funcionou.\n");
             }
             else {
                 if (topo2 != n) {
                     vetor[--topo2] = elemento;
                     return true;
                 }
+                System.out.println("Pilha cheia: push não funcionou.\n");
             }
         }
         else {
