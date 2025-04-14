@@ -21,18 +21,16 @@ public class EX07 {
     public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
-    String str = sc.nextLine();
-    Pilha p1 = new Pilha(str.length());
-    Pilha p2 = new Pilha(str.length());
+    String str = sc.nextLine();Pilha p2 = new Pilha(str.length());
     int parentA = 0;
     int parentB = 0;
 
     for (int i = 0; i < str.length(); i++) {
         char c = str.charAt(i);
         if (ehValido(c)){
-                p1.push(c);
                 p2.push(c);
         }
+        else if(c == ' ') {}
         else {
             System.out.println("Caracter inválido!");
             return;
@@ -43,29 +41,31 @@ public class EX07 {
 
     while (!p2.vazia()) {
         char c = p2.pop();
+        if (c == '(') parentA++;
+        else if(c == ')') parentB++;
+        if (p2.vazia()) break;
         char topo = p2.retornaTopo();
         System.out.println(c);
         if (c == '(') {
-            if (!(topo == ')'|| ehOperando(topo) || ehOperador(topo))){
+            if (!(topo == ')'|| topo == '(' ||ehOperando(topo) || ehOperador(topo))){
                 System.out.println("Não é infixa!");
                 return;
             }
-            parentA++;
         }
         else if (c == ')'){
-            if (!(topo == '('|| ehOperando(topo))){
+            if (!(topo == ')'|| topo == '(' || ehOperando(topo))){
                 System.out.println("Não é infixa!");
                 return;
             }
-            parentB++;
         }
 
         else if (c >= '0' && c <= '9'){
-            if (!(topo == ')' || ehOperador(topo))){
+            if (!(topo == ')' || topo == '(' ||ehOperador(topo) )){
                 System.out.println("Não é infixa!");
                 return;
             }
-        } else if (ehOperador(c)) {
+        }
+        else if (ehOperador(c)) {
             if (!(ehOperando(topo) || topo == '(' || topo == ')')){
                 System.out.println("Não é infixa!");
                 return;
@@ -73,7 +73,7 @@ public class EX07 {
         }
         //System.out.print(c);
 
-        if (p2.vazia()) break;
+        else if (p2.vazia()) break;
 
 
 
