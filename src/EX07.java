@@ -24,14 +24,56 @@ public class EX07 {
     String str = sc.nextLine();
     Pilha p1 = new Pilha(str.length());
     Pilha p2 = new Pilha(str.length());
+    int parentA = 0;
+    int parentB = 0;
 
     for (int i = 0; i < str.length(); i++) {
+        char c = str.charAt(i);
+        if (ehValido(c)){
+            if (c >= (int) '0' && c <= (int) '9') {
+                p1.push(c);
+            }
+            else {
+                p2.push(c);
+            }
+        }
+        else {
+            System.out.println("Caracter inválido!");
+            return;
+        }
+    }
+
+    while (!p1.vazia()) {
+        System.out.print(p1.pop());
+    }
+        System.out.println();
+    while (!p2.vazia()) {
+        char c = p2.pop();
+        if (c == '(') {
+            parentA++;
+        }
+        else if (c == ')'){
+            parentB++;
+        }
+    }
+
+    if (!(parentA == parentB))
+    {
+        System.out.println("Parenteses não alinhados!");
+        return;
+    }
+
+
+
+
+
+
+
 
     }
 
-    }
 
-    public boolean ehValido(char num) {
+    private static boolean ehValido(char num) {
         if (num >= (int) '0' && num <= (int) '9') {
             return true;
         }
