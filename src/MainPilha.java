@@ -34,6 +34,15 @@ public class MainPilha
 		// EX01
 		//EX01.verificarxcy(in.nextLine());
 
+		// EX02
+		/*
+		if (EX02.verificarStr("ABBACABBADAABACABAADAAAABBBCBBBAAAA")){
+			System.out.println("Está no formato aDbDc!");
+		}
+		else {
+			System.out.println("Não está no formato aDbDc!");
+		};*/
+
 		// EX03
 		/*EX03 duasPilhas = new EX03();
 		while (!duasPilhas.cheia()){
@@ -59,12 +68,12 @@ public class MainPilha
 		}*/
 
 		// EX05
-		if (EX05.verificaBalanceamento(in.nextLine())){
+		/*if (EX05.verificaBalanceamento(in.nextLine())){
 			System.out.println("Está balanceado com sucesso!");
 		}
 		else{
 			System.out.println("Não está balanceado!");
-		}
+		}*/
 
 		in.close();
 	}

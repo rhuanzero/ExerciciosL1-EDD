@@ -64,13 +64,13 @@ public class PilhaGenerica<T>
 		}
 	}
 	
-	public T retornaTopo(T elemento)
+	public boolean retornaTopo(T elemento)
 	{
 	     if(!this.vazia()){
 	        elemento = vetor.get(topo);         
-	        return elemento;
+	        return true;
 	     }
 	     else
-	    	 return elemento;
+	    	 return false;
 	}
 }
