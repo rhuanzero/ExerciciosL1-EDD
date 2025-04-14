@@ -30,12 +30,8 @@ public class EX07 {
     for (int i = 0; i < str.length(); i++) {
         char c = str.charAt(i);
         if (ehValido(c)){
-            if (c >= (int) '0' && c <= (int) '9') {
                 p1.push(c);
-            }
-            else {
                 p2.push(c);
-            }
         }
         else {
             System.out.println("Caracter inválido!");
@@ -43,18 +39,46 @@ public class EX07 {
         }
     }
 
-    while (!p1.vazia()) {
-        System.out.print(p1.pop());
-    }
         System.out.println();
+
     while (!p2.vazia()) {
         char c = p2.pop();
+        char topo = p2.retornaTopo();
+        System.out.println(c);
         if (c == '(') {
+            if (!(topo == ')'|| ehOperando(topo) || ehOperador(topo))){
+                System.out.println("Não é infixa!");
+                return;
+            }
             parentA++;
         }
         else if (c == ')'){
+            if (!(topo == '('|| ehOperando(topo))){
+                System.out.println("Não é infixa!");
+                return;
+            }
             parentB++;
         }
+
+        else if (c >= '0' && c <= '9'){
+            if (!(topo == ')' || ehOperador(topo))){
+                System.out.println("Não é infixa!");
+                return;
+            }
+        } else if (ehOperador(c)) {
+            if (!(ehOperando(topo) || topo == '(' || topo == ')')){
+                System.out.println("Não é infixa!");
+                return;
+            }
+        }
+        //System.out.print(c);
+
+        if (p2.vazia()) break;
+
+
+
+
+
     }
 
     if (!(parentA == parentB))
@@ -63,7 +87,9 @@ public class EX07 {
         return;
     }
 
+        System.out.println("É infixa!");
 
+    return;
 
 
 
@@ -86,6 +112,16 @@ public class EX07 {
         else if (num == (int) '/') {
             return true;
         }
+        return false;
+    }
+
+    private static boolean ehOperador(char num){
+        if (num == '*' || num == '/' || num == '+' || num == '-') return true;
+        return false;
+    }
+
+    private static boolean ehOperando(char num){
+        if (num >= '0' && num <='9') return true;
         return false;
     }
 }
