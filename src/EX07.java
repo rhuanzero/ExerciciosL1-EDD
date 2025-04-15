@@ -21,7 +21,8 @@ public class EX07 {
     public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
-    String str = sc.nextLine();Pilha p2 = new Pilha(str.length());
+    String str = sc.nextLine();
+    Pilha p2 = new Pilha(str.length());
     int parentA = 0;
     int parentB = 0;
 
@@ -47,7 +48,7 @@ public class EX07 {
         char topo = p2.retornaTopo();
         System.out.println(c);
         if (c == '(') {
-            if (!(topo == ')'|| topo == '(' ||ehOperando(topo) || ehOperador(topo))){
+            if (!(topo == ')'|| topo == '(' || ehOperando(topo) || ehOperador(topo))){
                 System.out.println("Não é infixa!");
                 return;
             }
@@ -100,16 +101,13 @@ public class EX07 {
 
 
     private static boolean ehValido(char num) {
-        if (num >= (int) '0' && num <= (int) '9') {
+        if (ehOperando(num)) {
             return true;
         }
-        else if (num >= (int) '(' && num <= (int) '+') {
+        else if (num == '(' || num == ')') {
             return true;
         }
-        else if (num == (int) '-') {
-            return true;
-        }
-        else if (num == (int) '/') {
+        else if (ehOperador(num)) {
             return true;
         }
         return false;
