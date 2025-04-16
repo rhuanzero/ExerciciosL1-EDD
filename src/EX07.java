@@ -46,7 +46,7 @@ public class EX07 {
         else if(c == ')') parentB++;
         if (p2.vazia()) break;
         char topo = p2.retornaTopo();
-        System.out.println(c);
+        //System.out.println(c);
         if (c == '(') {
             if (!(topo == ')'|| topo == '(' || ehOperando(topo) || ehOperador(topo))){
                 System.out.println("Não é infixa!");
@@ -60,8 +60,8 @@ public class EX07 {
             }
         }
 
-        else if (c >= '0' && c <= '9'){
-            if (!(topo == ')' || topo == '(' ||ehOperador(topo) )){
+        else if (ehOperando(c)){
+            if (!(topo == ')' || topo == '(' ||ehOperador(topo))){
                 System.out.println("Não é infixa!");
                 return;
             }
@@ -91,10 +91,6 @@ public class EX07 {
         System.out.println("É infixa!");
 
     return;
-
-
-
-
 
 
     }

@@ -35,13 +35,13 @@ public class MainPilha
 		//EX01.verificarxcy(in.nextLine());
 
 		// EX02
-		/*
-		if (EX02.verificarStr("ABBACABBADAABACABAADAAAABBBCBBBAAAA")){
+
+		if (EX02.verificarStr("ABAACAABADAABBCBBAA")){
 			System.out.println("Está no formato aDbDc!");
 		}
 		else {
 			System.out.println("Não está no formato aDbDc!");
-		};*/
+		};
 
 		// EX03
 		/*EX03 duasPilhas = new EX03();
