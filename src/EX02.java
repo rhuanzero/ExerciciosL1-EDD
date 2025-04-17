@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class EX02 {
     public static boolean verificarStr(String str) {
         //PilhaGenerica<String> pilha1 = new PilhaGenerica<>(26);
@@ -6,8 +8,6 @@ public class EX02 {
         Pilha p2 = new Pilha();
         boolean passouC = false;
         boolean passouD = false;
-
-
 
 
         for (int i = 0; i < str.length(); i++) {
@@ -82,6 +82,62 @@ public class EX02 {
         System.out.print("Está no formato XCY!");
         return true;
     }
+
+
+    public static boolean verificarxcy(Pilha p1, Pilha p2) {
+        Scanner in = new Scanner(System.in);
+
+
+        int tam = (entrada.length()-1)/2;
+
+        boolean verificaChar;
+
+
+
+        Pilha x = new Pilha(tam);
+        Pilha y = new Pilha(tam);
+
+        for (int i = 0; i < entrada.length(); i++) {
+            verificaChar = (entrada.charAt(i) == (int) 'A' || entrada.charAt(i) == (int) 'B' || entrada.charAt(i) == (int) 'C');
+            if (!verificaChar){
+                System.out.println("Caracteres inválidos!");
+                return false;
+            }
+        }
+        if ((entrada.charAt(tam) == 'C')){// Verifica se o C está na posiçao certa
+            for (int i = 0; !(entrada.charAt(i) == 'C'); i++) {
+                if (!(entrada.charAt(i) == (int) 'C')) {
+                    System.out.print(entrada.charAt(i));
+                    x.push(entrada.charAt(i));
+                }
+            }
+            System.out.println();
+            for (int i = entrada.length()-1; i != tam; i--) {
+                if (!(entrada.charAt(i) == (int) 'C')) {
+                    System.out.print(entrada.charAt(i));
+                    y.push(entrada.charAt(i));
+                }
+            }
+        }
+        else {
+            System.out.println("O caracter C está na posição errada!");
+            return false;
+        }
+        System.out.println();
+        for (int i = 0; i < tam; i++) {
+            if (x.pop() != y.pop()) {
+                System.out.println("Não são simetricos!");
+                return false;
+            }
+        }
+        System.out.print("Está no formato XCY!");
+        return true;
+    }
+
+
+
+
+
 }
 
 
