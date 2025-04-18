@@ -36,12 +36,8 @@ public class MainPilha
 
 		// EX02
 
-		if (EX02.verificarStr("ABAACAABADAABBCBBAA")){
-			System.out.println("Está no formato aDbDc!");
-		}
-		else {
-			System.out.println("Não está no formato aDbDc!");
-		};
+		EX02.verificarStr("ACADBCBDABCBA");
+
 
 		// EX03
 		/*EX03 duasPilhas = new EX03();
