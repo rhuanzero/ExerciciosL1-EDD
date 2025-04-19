@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class EX02 extends EX01 {
     public static boolean verificarStr(String str) {
         Pilha p1 = new Pilha(str.length());
-
+        Pilha Dcontador = new Pilha(13);
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
 
@@ -22,7 +22,12 @@ public class EX02 extends EX01 {
                     System.out.println("Nao está no formato aDbDc...Dz");
                     return false;
                 }
+                Dcontador.push(c);
             }
+        }
+        if (Dcontador.vazia()){
+            System.out.println("Nenhum D foi encontrado");
+            return false;
         }
         System.out.println("Está no formato aDbDc...Dz");
         return true;
