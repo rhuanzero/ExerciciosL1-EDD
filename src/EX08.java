@@ -25,10 +25,8 @@ import java.util.Scanner;
 
 public class EX08 {
 
-    public static void main(String[] args) {
+    public static void paresUnicos(int n) {
 
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
         PilhaGenerica<Integer> p1 = new PilhaGenerica<>(n);
 
         int b = 1;
