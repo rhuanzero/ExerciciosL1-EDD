@@ -3,24 +3,41 @@ por parâmetro, preservando a ordem das palavras na frase. Por exemplo “a maç
 deve ter como saída: “a ãçam átse erdop”. As operações básicas de uma pilha, push e pop,
 devem ser usadas.*/
 
-public class EX06 {
-    public static void inverteFrase(String str) {
-        Pilha pilha = new Pilha();
+public class EX06 extends EX01{
 
-        char c;
+
+
+    public static void inverteFrase(String frase) {
+        Pilha p1 = new Pilha(frase.length());
         int i = 0;
-        while ( i < str.length() )
-        {
-            c = str.charAt(i);
-            pilha.push(c);
+        char c;
+        while (frase.length() > i) {
+            c = frase.charAt(i);
+            if (c!= ' ') {
+                p1.push(c);
+            } else {
+                invertePalavra(p1);
+                System.out.print(' ');
+            }
+            if (i == frase.length() - 1) {
+                invertePalavra(p1);
+            }
             i++;
         }
 
-        System.out.println("Frase invertida: ");
+    }
+    public static void invertePalavra(Pilha p1) {
 
-        while (!pilha.vazia()) {
-            c = pilha.pop();
-            System.out.print(c);
+
+        char c;
+
+        //System.out.println("Frase invertida: ");
+
+        while (!p1.vazia()) {
+            c = p1.pop();
+            if (c != ' ') {
+                System.out.print(c);
+            }
         }
 
     }

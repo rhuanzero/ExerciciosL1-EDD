@@ -7,7 +7,7 @@ deve ser considerado balanceado. Exemplo:
 
 public class EX05 {
     public static <T> boolean verificaBalanceamento(String str) {
-    Pilha pilha1 = new Pilha();
+    Pilha pilha1 = new Pilha(str.length());
     boolean res = true;
 
 

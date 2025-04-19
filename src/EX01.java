@@ -39,8 +39,8 @@ public class EX01{
 
     protected static int pilhaTam(Pilha pilha1) {
         int tam = 0;
-        Pilha aux = new Pilha(pilhaTam(pilha1));
-        Pilha aux2 = new Pilha(pilhaTam(pilha1));
+        Pilha aux = new Pilha(200);
+        Pilha aux2 = new Pilha(200);
         while (!pilha1.vazia()) {
             aux.push(pilha1.pop());
             tam++;
