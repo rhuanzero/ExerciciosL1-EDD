@@ -23,8 +23,8 @@ public class EX01{
     }
 
     protected static void inverterPilha(Pilha pilha1) {
-        Pilha aux = new Pilha();
-        Pilha aux2 = new Pilha();
+        Pilha aux = new Pilha(pilhaTam(pilha1));
+        Pilha aux2 = new Pilha(pilhaTam(pilha1));
 
         while (!pilha1.vazia()) {
             aux.push(pilha1.pop());
@@ -39,8 +39,8 @@ public class EX01{
 
     protected static int pilhaTam(Pilha pilha1) {
         int tam = 0;
-        Pilha aux = new Pilha(100);
-        Pilha aux2 = new Pilha(100);
+        Pilha aux = new Pilha(pilhaTam(pilha1));
+        Pilha aux2 = new Pilha(pilhaTam(pilha1));
         while (!pilha1.vazia()) {
             aux.push(pilha1.pop());
             tam++;
@@ -60,6 +60,9 @@ public class EX01{
 
         while (!p1.vazia()) {
             aux.push(p1.pop());
+        }
+        while (!p2.vazia()) {
+            p2.pop();
         }
 
         while (!aux.vazia()) {
