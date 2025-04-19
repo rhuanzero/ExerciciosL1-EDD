@@ -115,18 +115,22 @@ public class EX01{
                     verificaPilhaInvertida = true;
                 }
 
-                if (pilhaTam(x) != pilhaTam(y)){
-                    System.out.println("Tamanhos desproporcionais!");
-                    return false;
-                }
                 if (verificaPilhaInvertida && c != 'C') {
                     y.push(c);
                 }
+                }
 
-            }
+
+
         } else {
             System.out.println("O caracter C está na posição errada!");
             return false;
+        }
+
+        if (pilhaTam(x) != pilhaTam(y)){
+            System.out.println("Tamanhos desproporcionais!");
+            return false;
+
         }
 
         System.out.println();
