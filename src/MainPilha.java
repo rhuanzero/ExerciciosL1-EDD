@@ -36,7 +36,7 @@ public class MainPilha
 
 		// EX02
 
-		EX02.verificarStr("ACADBCBDABCBA");
+		EX02.verificarStr("ABDBA");
 
 
 		// EX03

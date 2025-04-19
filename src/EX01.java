@@ -6,48 +6,145 @@ y onde x e y são cadeias de caracteres compostas por letras ‘A’ e/ou ‘B�
 x. Isto é, se x = “ABABBA”, y deve equivaler a “ABBABA”. Em cada ponto, você só poderá ler
 o próximo caractere da cadeia.  */
 
-public class EX01 {
+public class EX01{
     public static boolean verificarxcy(String entrada) {
         Scanner in = new Scanner(System.in);
-        int tam = (entrada.length()-1)/2;
-        boolean verificaChar;
-        Pilha x = new Pilha(tam);
-        Pilha y = new Pilha(tam);
+        Pilha x = new Pilha(entrada.length());
 
         for (int i = 0; i < entrada.length(); i++) {
-            verificaChar = (entrada.charAt(i) == (int) 'A' || entrada.charAt(i) == (int) 'B' || entrada.charAt(i) == (int) 'C');
-            if (!verificaChar){
+            x.push(entrada.charAt(i));
+        }
+
+        if (verificarxcyPilha(x)){
+            return true;
+        };
+        return false;
+
+    }
+
+    protected static void inverterPilha(Pilha pilha1) {
+        Pilha aux = new Pilha();
+        Pilha aux2 = new Pilha();
+
+        while (!pilha1.vazia()) {
+            aux.push(pilha1.pop());
+        }
+        while (!aux.vazia()) {
+            aux2.push(aux.pop());
+        }
+        while (!aux2.vazia()) {
+            pilha1.push(aux2.pop());
+        }
+    }
+
+    protected static int pilhaTam(Pilha pilha1) {
+        int tam = 0;
+        Pilha aux = new Pilha(100);
+        Pilha aux2 = new Pilha(100);
+        while (!pilha1.vazia()) {
+            aux.push(pilha1.pop());
+            tam++;
+        }
+        while (!aux.vazia()) {
+            aux2.push(aux.pop());
+        }
+        while (!aux2.vazia()) {
+            pilha1.push(aux2.pop());
+        }
+        return tam;
+    }
+
+    protected static void copiarPilha(Pilha p1, Pilha p2) {
+        int i = pilhaTam(p1);
+        Pilha aux = new Pilha(i);
+
+        while (!p1.vazia()) {
+            aux.push(p1.pop());
+        }
+
+        while (!aux.vazia()) {
+            char c = aux.pop();
+            p2.push(c);
+            p1.push(c);
+        }
+    }
+
+    public static boolean verificarxcyPilha(Pilha p1) {
+        int tam = pilhaTam(p1);
+        int localC = tam/2;
+        boolean verificaChar;
+        boolean verificaC = false;
+
+        Pilha aux = new Pilha(tam);
+        copiarPilha(p1, aux);
+        Pilha x = new Pilha((tam - 1) / 2);
+        Pilha y = new Pilha((tam - 1) / 2);
+
+        while (!p1.vazia()) {
+            char c = p1.pop();
+            verificaChar = (c == 'A' || c == 'B' || c == 'C');
+            if (!verificaChar) {
                 System.out.println("Caracteres inválidos!");
                 return false;
             }
         }
-        if ((entrada.charAt(tam) == 'C')){// Verifica se o C está na posiçao certa
-            for (int i = 0; !(entrada.charAt(i) == 'C'); i++) {
-                if (!(entrada.charAt(i) == (int) 'C')) {
-                    System.out.print(entrada.charAt(i));
-                    x.push(entrada.charAt(i));
+
+        copiarPilha(aux, p1);
+
+
+        for (int i = 0; i != tam; i++) { // Verificar C na posição correta
+            char c = p1.pop();
+            if (c == 'C') {
+                if (i == localC) {
+                    verificaC = true;
                 }
             }
-            System.out.println();
-            for (int i = entrada.length()-1; i != tam; i--) {
-                if (!(entrada.charAt(i) == (int) 'C')) {
-                    System.out.print(entrada.charAt(i));
-                    y.push(entrada.charAt(i));
-                }
-            }
+            ;
         }
-        else {
+
+        copiarPilha(aux, p1);
+
+
+        boolean verificaPilhaInvertida = false;
+        if (verificaC) { // Verifica se o C está na posiçao certa
+            while (!p1.vazia()) {
+                char c = p1.pop();
+                if (!verificaPilhaInvertida && c != 'C') {
+                    x.push(c);
+                } else {
+                    verificaPilhaInvertida = true;
+                }
+
+                if (pilhaTam(x) != pilhaTam(y)){
+                    System.out.println("Tamanhos desproporcionais!");
+                    return false;
+                }
+                if (verificaPilhaInvertida && c != 'C') {
+                    y.push(c);
+                }
+
+            }
+        } else {
             System.out.println("O caracter C está na posição errada!");
             return false;
         }
+
         System.out.println();
-        for (int i = 0; i < tam; i++) {
+        inverterPilha(y);
+
+
+
+        while (!x.vazia()) {
             if (x.pop() != y.pop()) {
                 System.out.println("Não são simetricos!");
                 return false;
             }
         }
+
+
         System.out.print("Está no formato XCY!");
         return true;
-    }
-}
+
+
+    }}
+
