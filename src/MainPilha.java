@@ -71,8 +71,9 @@ public class MainPilha
 			System.out.println("Não está balanceado!");
 		}*/
 
-		EX06.inverteFrase("o orrohc erroc odáirp");
+		//EX06.inverteFrase("o orrohc erroc odáirp");
 
+		//EX07.verificarInfixa(in.nextLine());
 
 		in.close();
 	}

@@ -18,13 +18,9 @@ import java.util.Scanner;
 
 public class EX07 {
 
-    public static void main(String[] args) {
-
-    Scanner sc = new Scanner(System.in);
-    String str = sc.nextLine();
+    public static boolean verificarInfixa(String str) {
     Pilha p2 = new Pilha(str.length());
-    int parentA = 0;
-    int parentB = 0;
+    int parenteses = 0;
 
     for (int i = 0; i < str.length(); i++) {
         char c = str.charAt(i);
@@ -34,7 +30,7 @@ public class EX07 {
         else if(c == ' ') {}
         else {
             System.out.println("Caracter inválido!");
-            return;
+            return false;
         }
     }
 
@@ -42,34 +38,41 @@ public class EX07 {
 
     while (!p2.vazia()) {
         char c = p2.pop();
-        if (c == '(') parentA++;
-        else if(c == ')') parentB++;
+        if (c == ')') {
+            parenteses++;
+        } else if (c == '(') {
+            parenteses--;
+            if (parenteses < 0) {
+                System.out.println("Não é infixa!");
+                return false;
+            }
+        }
         if (p2.vazia()) break;
         char topo = p2.retornaTopo();
         //System.out.println(c);
         if (c == '(') {
             if (!(topo == ')'|| topo == '(' || ehOperando(topo) || ehOperador(topo))){
                 System.out.println("Não é infixa!");
-                return;
+                return false;
             }
         }
         else if (c == ')'){
             if (!(topo == ')'|| topo == '(' || ehOperando(topo))){
                 System.out.println("Não é infixa!");
-                return;
+                return false;
             }
         }
 
         else if (ehOperando(c)){
-            if (!(topo == ')' || topo == '(' ||ehOperador(topo))){
+            if (!(topo == ')' || topo == '(' || ehOperador(topo))){
                 System.out.println("Não é infixa!");
-                return;
+                return false;
             }
         }
         else if (ehOperador(c)) {
             if (!(ehOperando(topo) || topo == '(' || topo == ')')){
                 System.out.println("Não é infixa!");
-                return;
+                return false;
             }
         }
         //System.out.print(c);
@@ -82,15 +85,15 @@ public class EX07 {
 
     }
 
-    if (!(parentA == parentB))
+    if (parenteses !=0)
     {
         System.out.println("Parenteses não alinhados!");
-        return;
+        return false;
     }
 
         System.out.println("É infixa!");
 
-    return;
+    return true;
 
 
     }
