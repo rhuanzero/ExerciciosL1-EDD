@@ -25,10 +25,10 @@ import java.util.Scanner;
 
 public class EX08 {
 
-    public static void paresUnicos(int n) {
+    public static int paresUnicos(int n) {
 
         PilhaGenerica<Integer> p1 = new PilhaGenerica<>(n);
-
+        int contador = 0;
         int b = 1;
         while (b <= n){
             p1.push(b);
@@ -40,8 +40,12 @@ public class EX08 {
             int topo = p1.pop();
             if (topo!=1) {
                 System.out.println("Par unico:" + "(" + topo + "," + (topo - 1) + ")");
+                contador++;
             }
         }
+
+        System.out.println("Foram encontrados "+contador+" pares unicos!");
+        return contador;
 
     }
 

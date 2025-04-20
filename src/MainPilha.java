@@ -74,7 +74,7 @@ public class MainPilha
 		//EX06.inverteFrase("o orrohc erroc odáirp");
 
 		//EX07.verificarInfixa(in.nextLine());
-
+		EX08.paresUnicos(5);
 		in.close();
 	}
 }
