@@ -34,7 +34,6 @@ public class EX08 {
             p1.push(b);
             b++;
         }
-        
 
         while (!p1.vazia()){
             int topo = p1.pop();
@@ -48,9 +47,6 @@ public class EX08 {
         return contador;
 
     }
-
-
-
 
 }
 

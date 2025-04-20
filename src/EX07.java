@@ -121,5 +121,6 @@ public class EX07 {
         if (num >= '0' && num <='9') return true;
         return false;
     }
+
 }
 

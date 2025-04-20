@@ -50,14 +50,14 @@ public class MainPilha
 			duasPilhas.pop();
 		}*/
 
-		// EX04
+		//EX04
 		/*PilhaGenerica<Integer> teste = new PilhaGenerica<Integer>(5);
 
 		while (!teste.cheia()){
 			teste.push(in.nextInt());
 		}
 
-		EX04.removerElemento(teste,5);
+		EX04.removerElemento(teste,2);
 
 		while (!teste.vazia()){
 			System.out.println(teste.pop());
@@ -74,7 +74,7 @@ public class MainPilha
 		//EX06.inverteFrase("o orrohc erroc odáirp");
 
 		//EX07.verificarInfixa(in.nextLine());
-		EX08.paresUnicos(5);
+		//EX08.paresUnicos(5);
 		in.close();
 	}
 }

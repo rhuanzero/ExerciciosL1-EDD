@@ -26,8 +26,8 @@ public class EX06 extends EX01{
         }
 
     }
-    public static void invertePalavra(Pilha p1) {
 
+    public static void invertePalavra(Pilha p1) {
 
         char c;
 
